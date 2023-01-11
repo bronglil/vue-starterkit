@@ -6,8 +6,8 @@ const MAX_COMMITS_PER_DAY = 2; // Max 1 commits per day (but randomized between 
 const MAX_DAYS_PER_WEEK = 1; // Maximum number of days with commits in a week
 
 // Date range: for example, the year 2023
-const START_DATE = new Date('2022-01-11');
-const END_DATE = new Date('2023-12-31');
+const START_DATE = new Date('2023-01-11');
+const END_DATE = new Date('2023-07-28');
 
 async function makeCommitForDate(commitDate, numberOfCommits) {
     const formattedDate = commitDate.toISOString().split('T')[0];
