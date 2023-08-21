@@ -1,16 +1,19 @@
 <template>
   <div id="app">
     <counter-comp/>
+    <ConditionalRendering/>
   </div>
 </template>
 
 <script>
 import  CounterComp from "./components/CounterComp.vue";
+import ConditionalRendering from "./components/ConditionalRendering.vue";
 
 export default {
   name: 'App',
   components : {
-    CounterComp, // Use the corrected component name
+    CounterComp,
+    ConditionalRendering // Use the corrected component name
   }
 }
 </script>
