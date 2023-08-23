@@ -11,6 +11,7 @@
         </template>
       </stepper>
     </div>
+    <ImageUploader />
   </div>
 </template>
 
@@ -18,13 +19,14 @@
 import CounterComp from "./components/CounterComp.vue";
 import ConditionalRendering from "./components/ConditionalRendering.vue";
 import Stepper from "./components/Stepper.vue";
-
+import ImageUploader from "@/components/ImageUploader.vue";
 export default {
   name: "App",
   components: {
     CounterComp,
     ConditionalRendering,
     Stepper, // Use the corrected component name
+    ImageUploader,
   },
   data() {
     return {
