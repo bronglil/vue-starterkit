@@ -1,6 +1,11 @@
 <template>
   <div id="app">
-    <counter-comp />
+    <!-- started with vue3 -->
+    <div>
+      <div>{{ header ? header : "welcome" }}</div>
+      <input v-model="header" />
+    </div>
+    <!-- <counter-comp />
     <ConditionalRendering />
     <div>
       <stepper :initialStep="currentStep">
@@ -24,29 +29,30 @@
         type="email"
         placeholder="Enter your email"
       ></custom-input>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
-import CounterComp from "./components/CounterComp.vue";
-import ConditionalRendering from "./components/ConditionalRendering.vue";
-import Stepper from "./components/Stepper.vue";
-import ImageUploader from "@/components/ImageUploader.vue";
-import CustomInput from "../src/components/FormComponent.vue";
+// import CounterComp from "./components/CounterComp.vue";
+// import ConditionalRendering from "./components/ConditionalRendering.vue";
+// import Stepper from "./components/Stepper.vue";
+// import ImageUploader from "@/components/ImageUploader.vue";
+// import CustomInput from "../src/components/FormComponent.vue";
 
 export default {
   name: "App",
-  components: {
-    CounterComp,
-    ConditionalRendering,
-    Stepper, // Use the corrected component name
-    ImageUploader,
-    CustomInput,
-  },
+  // components: {
+  //   CounterComp,
+  //   ConditionalRendering,
+  //   Stepper, // Use the corrected component name
+  //   ImageUploader,
+  //   CustomInput,
+  // },
   data() {
     return {
       currentStep: 0,
+      header: "vue 3 js starter",
       formData: {
         username: "",
         email: "",
