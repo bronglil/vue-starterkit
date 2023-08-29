@@ -31,6 +31,7 @@
       <ul>
         <li v-for="item in items" v-bind:key="item.id">{{ item.label }}</li>
       </ul>
+      <p v-if="items?.length === 0">Sorry we don't have item in list</p>
     </div>
     <button v-on:click="handleClick" class="primary btn">Save Changes</button>
   </div>
@@ -41,10 +42,7 @@ export default {
   data() {
     return {
       header: "Shopping List App",
-      items: [
-        { id: 1, label: "shoes" },
-        { id: 2, label: "fruits" },
-      ],
+      items: [],
       newItem: "",
       newItemPriority: "low",
       iceCreamFalvoured: [],
