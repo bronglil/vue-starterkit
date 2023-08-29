@@ -2,8 +2,9 @@
   <div id="app">
     <!-- started with vue3 -->
 
-    <input-Items />
+    <!-- <input-Items /> -->
 
+    <TodoApp />
     <!-- <counter-comp />
     <ConditionalRendering />
     <div>
@@ -38,7 +39,8 @@
 // import Stepper from "./components/Stepper.vue";
 // import ImageUploader from "@/components/ImageUploader.vue";
 // import CustomInput from "../src/components/FormComponent.vue";
-import inputItems from "./components/inputItems.vue";
+// import inputItems from "./components/inputItems.vue";
+import TodoApp from "./components/TodoApp.vue";
 
 export default {
   name: "App",
@@ -48,7 +50,8 @@ export default {
     //   Stepper, // Use the corrected component name
     //   ImageUploader,
     //   CustomInput,
-    inputItems,
+    // inputItems,
+    TodoApp,
   },
   data() {
     return {

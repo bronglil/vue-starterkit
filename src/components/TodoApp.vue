@@ -7,6 +7,7 @@
       type="text"
       placeholder="Enter Item here"
       v-model="newItem"
+      v-on:keydown.enter="handleClick"
     />
     <div style="margin: 10px">
       <label class="radio-label">
@@ -27,42 +28,11 @@
         />
         High
       </label>
-      <br />
-      <select class="custom-select" v-model="newItemPriority">
-        <option value="low">Low</option>
-        <option value="high">High</option>
-      </select>
-
-      <br />
-      <label>
-        <input type="checkbox" v-model="newItemPriority" />
-        New Item Priority
-      </label>
-
-      <br />
-      <label>
-        <input type="checkbox" v-model="iceCreamFalvoured" value="choclate" />
-        Choclate
-      </label>
-      <label>
-        <input type="checkbox" v-model="iceCreamFalvoured" value="vanila" />
-        Vanila
-      </label>
-      <label>
-        <input type="checkbox" v-model="iceCreamFalvoured" value="strawberry" />
-        Strawberry
-      </label>
-      <label>
-        <input type="checkbox" v-model="iceCreamFalvoured" value="mangoe" />
-        Mangoe
-      </label>
+      <ul>
+        <li v-for="item in items" v-bind:key="item.id">{{ item.label }}</li>
+      </ul>
     </div>
-    <ul>
-      <li v-for="item in items" v-bind:key="item.id">
-        {{ item.id }}- {{ item.label }}
-      </li>
-    </ul>
-    <button class="primary btn">Save Changes</button>
+    <button v-on:click="handleClick" class="primary btn">Save Changes</button>
   </div>
 </template>
 
@@ -74,14 +44,20 @@ export default {
       items: [
         { id: 1, label: "shoes" },
         { id: 2, label: "fruits" },
-        { id: 3, label: "banana" },
-        { id: 4, label: "test" },
-        { id: 5, label: "mangoes" },
       ],
       newItem: "",
       newItemPriority: "low",
       iceCreamFalvoured: [],
     };
+  },
+  methods: {
+    handleClick() {
+      this.items.push({ id: this.items?.length + 1, label: this.newItem });
+      this.resetFields();
+    },
+    resetFields() {
+      this.newItem = "";
+    },
   },
 };
 </script>
