@@ -1,39 +1,51 @@
 <template>
-  <!-- started with vue3 -->
   <div>
-    <div class="heading">{{ header ? header : "welcome" }}</div>
-    <input
-      class="custom-input"
-      type="text"
-      placeholder="Enter Item here"
-      v-model="newItem"
-      v-on:keydown.enter="handleClick"
-    />
-    <div style="margin: 10px">
-      <label class="radio-label">
-        <input
-          class="radio-input"
-          v-model="newItemPriority"
-          type="radio"
-          value="low"
-        />
-        Low
-      </label>
-      <label class="radio-label">
-        <input
-          class="radio-input"
-          v-model="newItemPriority"
-          type="radio"
-          value="high"
-        />
-        High
-      </label>
-      <ul>
-        <li v-for="item in items" v-bind:key="item.id">{{ item.label }}</li>
-      </ul>
-      <p v-if="items?.length === 0">Sorry we don't have item in list</p>
+    <!-- started with vue3 -->
+    <div class="heading">
+      {{ header ? header : "welcome" }}
+      <button v-if="!editing" @click="editing = true" class="primary">
+        Add Item
+      </button>
+      <button v-if="editing" @click="editing = false" class="danger">
+        Cancel
+      </button>
     </div>
-    <button v-on:click="handleClick" class="primary btn">Save Changes</button>
+
+    <div v-if="editing" class="header">
+      <input
+        class="custom-input"
+        type="text"
+        placeholder="Enter Item here"
+        v-model="newItem"
+        v-on:keydown.enter="handleClick"
+      />
+      <div style="margin: 10px">
+        <label class="radio-label">
+          <input
+            class="radio-input"
+            v-model="newItemPriority"
+            type="radio"
+            value="low"
+          />
+          Low
+        </label>
+        <label class="radio-label">
+          <input
+            class="radio-input"
+            v-model="newItemPriority"
+            type="radio"
+            value="high"
+          />
+          High
+        </label>
+        <ul>
+          <li v-for="item in items" v-bind:key="item.id">{{ item.label }}</li>
+        </ul>
+      </div>
+      <button v-on:click="handleClick" class="primary btn">Save Changes</button>
+    </div>
+    <p v-if="items?.length === 0">Sorry we don't have item in list</p>
+    <br />
   </div>
 </template>
 
@@ -43,6 +55,7 @@ export default {
     return {
       header: "Shopping List App",
       items: [],
+      editing: false,
       newItem: "",
       newItemPriority: "low",
       iceCreamFalvoured: [],
@@ -80,6 +93,26 @@ li {
   border-radius: 5px;
   font-size: 16px;
   width: 300px;
+}
+
+.primary {
+  background-color: #007bff;
+  color: #fff;
+  outline: none;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.danger {
+  background-color: #dc3545;
+  color: #fff;
+  outline: none;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 5px;
 }
 
 /* Additional styling for when the input is focused */
