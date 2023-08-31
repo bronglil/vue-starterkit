@@ -38,14 +38,25 @@
           />
           High
         </label>
-        <ul>
-          <li v-for="item in items" v-bind:key="item.id">{{ item.label }}</li>
-        </ul>
       </div>
-      <button v-on:click="handleClick" class="primary btn">Save Changes</button>
+      <button
+        v-on:click="handleClick"
+        v-bind:disabled="newItem.length === 0"
+        class="primary btn"
+      >
+        Save Changes
+      </button>
     </div>
-    <p v-if="items?.length === 0">Sorry we don't have item in list</p>
-    <br />
+    <a v-if="editing && newItem?.length > 0" :href="newItem" target="_blank"
+      >Dynamic Link</a
+    >
+    <div class="items">
+      <ul>
+        <li v-for="item in items" v-bind:key="item.id">{{ item.label }}</li>
+      </ul>
+      <p v-if="items?.length === 0">Sorry we don't have item in list</p>
+      <br />
+    </div>
   </div>
 </template>
 
@@ -79,13 +90,30 @@ export default {
   font-weight: 500;
   margin: 10px 2px;
 }
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 ul {
-  list-style-type: none; /* Type of bullet point */
-  padding-left: 20px; /* Indentation for the list */
+  list-style-type: none; /* Remove default bullet points */
+  padding: 0;
+  margin: 0;
+  background-color: #f2f2f2; /* Set background color */
+  border-radius: 5px;
+  margin: 1rem 0;
 }
 
+/* Styling for the <li> elements */
 li {
-  margin-bottom: 5px; /* Space between list items */
+  padding: 10px;
+  border-bottom: 1px solid #ccc; /* Add a border bottom for separation */
+  color: #333; /* Set text color */
+}
+
+/* Styling for the last <li> element to remove the border bottom */
+li:last-child {
+  border-bottom: none;
 }
 .custom-input {
   padding: 10px;
@@ -103,6 +131,14 @@ li {
   padding: 10px;
   border-radius: 5px;
   margin: 5px;
+  cursor: pointer;
+}
+
+.primary:disabled {
+  opacity: 0.5; /* Reduce opacity to indicate disabled state */
+  cursor: not-allowed; /* Change cursor to indicate not-allowed */
+  background-color: #ccc;
+  color: #999;
 }
 
 .danger {
