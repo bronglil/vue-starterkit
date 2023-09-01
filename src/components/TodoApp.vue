@@ -18,6 +18,7 @@
         placeholder="Enter Item here"
         v-model="newItem"
         v-on:keydown.enter="handleClick"
+        value="editItem"
       />
       <div style="margin: 10px">
         <label class="radio-label">
@@ -52,7 +53,14 @@
     >
     <div class="items">
       <ul>
-        <li v-for="item in items" v-bind:key="item.id">{{ item.label }}</li>
+        <li
+          v-for="(item, index) in items"
+          v-bind:key="item.id"
+          :class="{ strikethrough: !item.purchased }"
+          @click="doEdit(newItem, index)"
+        >
+          {{ item.label }}
+        </li>
       </ul>
       <p v-if="items?.length === 0">Sorry we don't have item in list</p>
       <br />
@@ -68,17 +76,28 @@ export default {
       items: [],
       editing: false,
       newItem: "",
+      editItem: "",
       newItemPriority: "low",
       iceCreamFalvoured: [],
     };
   },
   methods: {
     handleClick() {
-      this.items.push({ id: this.items?.length + 1, label: this.newItem });
+      this.items.push({
+        id: this.items?.length + 1,
+        label: this.newItem,
+        priority: this.newItemPriority,
+        purchased: this.newItemPriority === "low" ? false : true,
+      });
       this.resetFields();
     },
     resetFields() {
       this.newItem = "";
+    },
+    doEdit(item, indexToEdit) {
+      this.editItem = this.items[indexToEdit]["label"];
+      this.items[indexToEdit]["label"] = item;
+      this.editing = true;
     },
   },
 };
@@ -103,7 +122,9 @@ ul {
   border-radius: 5px;
   margin: 1rem 0;
 }
-
+.strikethrough {
+  text-decoration: line-through;
+}
 /* Styling for the <li> elements */
 li {
   padding: 10px;
