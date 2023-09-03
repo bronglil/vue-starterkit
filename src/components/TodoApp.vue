@@ -20,6 +20,7 @@
         v-on:keydown.enter="handleClick"
         value="editItem"
       />
+      <p>{{ charachtersLeft }}/20</p>
       <div style="margin: 10px">
         <label class="radio-label">
           <input
@@ -54,7 +55,7 @@
     <div class="items">
       <ul>
         <li
-          v-for="(item, index) in items"
+          v-for="(item, index) in reverseItem"
           v-bind:key="item.id"
           :class="{ strikethrough: !item.purchased }"
           @click="doEdit(newItem, index)"
@@ -80,6 +81,14 @@ export default {
       newItemPriority: "low",
       iceCreamFalvoured: [],
     };
+  },
+  computed: {
+    charachtersLeft() {
+      return this.newItem?.length;
+    },
+    reverseItem() {
+      return [...this.items].reverse();
+    },
   },
   methods: {
     handleClick() {
