@@ -18,7 +18,6 @@
         placeholder="Enter Item here"
         v-model="newItem"
         v-on:keydown.enter="handleClick"
-        value="editItem"
       />
       <p>{{ charachtersLeft }}/20</p>
       <div style="margin: 10px">
@@ -46,7 +45,7 @@
         v-bind:disabled="newItem.length === 0"
         class="primary btn"
       >
-        Save Changes
+        {{ suckMystate }}
       </button>
     </div>
     <a v-if="editing && newItem?.length > 0" :href="newItem" target="_blank"
@@ -58,7 +57,7 @@
           v-for="(item, index) in reverseItem"
           v-bind:key="item.id"
           :class="{ strikethrough: !item.purchased }"
-          @click="doEdit(newItem, index)"
+          @click="doEdit(index)"
         >
           {{ item.label }}
         </li>
@@ -89,6 +88,9 @@ export default {
     reverseItem() {
       return [...this.items].reverse();
     },
+    suckMystate() {
+      return this.editing ? "update" : "Save Changes";
+    },
   },
   methods: {
     handleClick() {
@@ -99,14 +101,16 @@ export default {
         purchased: this.newItemPriority === "low" ? false : true,
       });
       this.resetFields();
+      this.editing = false;
     },
     resetFields() {
       this.newItem = "";
     },
-    doEdit(item, indexToEdit) {
-      this.editItem = this.items[indexToEdit]["label"];
-      this.items[indexToEdit]["label"] = item;
+    doEdit(indexToEdit) {
       this.editing = true;
+      this.editItem = this.items[indexToEdit].label;
+      this.newItem = this.editItem;
+      this.items[indexToEdit]["label"] = this.editItem;
     },
   },
 };
