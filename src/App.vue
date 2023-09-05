@@ -6,8 +6,8 @@
 
     <TodoApp />
     <!-- <counter-comp />
-    <ConditionalRendering />
-    <div>
+    <ConditionalRendering /> -->
+    <!-- <div>
       <stepper :initialStep="currentStep">
         <template v-slot="{ step }">
           <div v-if="step === 0">Step 1 content</div>
@@ -15,9 +15,9 @@
           <div v-if="step === 2">Step 3 content</div>
         </template>
       </stepper>
-    </div>
+    </div> -->
     <ImageUploader />
-    <div>
+    <!-- <div>
       <custom-input
         v-model="formData.username"
         label="Username"
