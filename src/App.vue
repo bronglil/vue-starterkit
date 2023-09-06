@@ -16,7 +16,7 @@
         </template>
       </stepper>
     </div> -->
-    <ImageUploader />
+    <!-- <ImageUploader /> -->
     <!-- <div>
       <custom-input
         v-model="formData.username"
