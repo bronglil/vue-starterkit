@@ -5,6 +5,7 @@
     <!-- <input-Items /> -->
 
     <TodoApp />
+    <GitHubCard username="john doe" />
     <!-- <counter-comp />
     <ConditionalRendering /> -->
     <!-- <div>
@@ -41,6 +42,7 @@
 // import CustomInput from "../src/components/FormComponent.vue";
 // import inputItems from "./components/inputItems.vue";
 import TodoApp from "./components/TodoApp.vue";
+import GitHubCard from "./components/GitHubCard.vue";
 
 export default {
   name: "App",
@@ -52,6 +54,7 @@ export default {
     //   CustomInput,
     // inputItems,
     TodoApp,
+    GitHubCard,
   },
   data() {
     return {
