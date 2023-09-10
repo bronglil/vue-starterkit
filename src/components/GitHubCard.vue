@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   props: {
     username: String,
@@ -28,13 +30,13 @@ export default {
       userData: {},
     };
   },
-  created() {
+  mounted() {
     this.fetchUserData();
   },
   methods: {
     async fetchUserData() {
       try {
-        const response = await fetch(
+        const response = await axios.get(
           `https://api.github.com/users/${this.username}`
         );
         if (response.ok) {
