@@ -2,10 +2,12 @@
   <div id="app">
     <!-- started with vue3 -->
 
+    <ProductList />
+
     <!-- <input-Items /> -->
 
-    <TodoApp />
-    <GitHubCard username="john doe" />
+    <!-- <TodoApp />
+    <GitHubCard username="john doe" /> -->
     <!-- <counter-comp />
     <ConditionalRendering /> -->
     <!-- <div>
@@ -41,8 +43,9 @@
 // import ImageUploader from "@/components/ImageUploader.vue";
 // import CustomInput from "../src/components/FormComponent.vue";
 // import inputItems from "./components/inputItems.vue";
-import TodoApp from "./components/TodoApp.vue";
-import GitHubCard from "./components/GitHubCard.vue";
+// import TodoApp from "./components/TodoApp.vue";
+// import GitHubCard from "./components/GitHubCard.vue";
+import ProductList from "./components/shoppingComps/ProductList.vue";
 
 export default {
   name: "App",
@@ -53,8 +56,9 @@ export default {
     //   ImageUploader,
     //   CustomInput,
     // inputItems,
-    TodoApp,
-    GitHubCard,
+    // TodoApp,
+    // GitHubCard,
+    ProductList,
   },
   data() {
     return {
