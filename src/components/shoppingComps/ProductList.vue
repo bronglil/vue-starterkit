@@ -23,11 +23,6 @@ export default {
       this.products = products;
     });
   },
-  methods: {
-    fetchProducts(productList) {
-      this.products = productList;
-    },
-  },
 };
 </script>
 
