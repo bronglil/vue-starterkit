@@ -9,9 +9,9 @@ export default new Vuex.Store({
         products: []
     },
     getters: {  //this is equalvalent to the computed state.
-        getProductsCounts(){
-
-        }
+       avaliableProducts(state){
+            return state.products.filter((item) => item.inventory > 0)
+       }
     },
 
     actions: {  //that is equalvalent to the methods.

@@ -16,7 +16,7 @@ import shop from "../../api";
 export default {
   computed: {
     products() {
-      return store.state.products;
+      return store.getters.avaliableProducts;
     },
   },
   created() {
